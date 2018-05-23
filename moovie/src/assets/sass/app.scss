@@ -1,0 +1,186 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/preflight";
+ */
+@tailwind preflight;
+
+/**
+ * This injects any component classes registered by plugins.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/components";
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "components/buttons";
+ * @import "components/forms";
+ */
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/utilities";
+ */
+@tailwind utilities;
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */
+
+@import url("https://fonts.googleapis.com/css?family=Muli:400,400i,600,600i,700,800");
+
+.outline-n:focus{
+  outline: none;
+}
+
+.border-shadow{
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
+  &:hover{
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  &:focus{
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+  }
+}
+
+.card-container:hover > .bg-black-custom-6 { background-color: rgba(51,51,51,.4); }
+
+.card-container:hover > .fill-fill { fill: white; }
+
+.card{
+  @apply .cursor-pointer .inline-block .p-4 .tran-5 .z-0 .rounded-lg;
+}
+
+.card{
+  div { font-family: 'Muli', sans-serif;  }
+}
+
+.card:hover{
+  @apply .bg-green-custom-1 .rounded-lg;
+}
+
+.card-title{
+  @apply .text-white .uppercase .text-center .pt-2 .pb-2 .text-xs;
+}
+
+.input-style {
+  @apply .mt-6 .bg-black-custom-4 .border-transparent .inline-block .font-sans  .text-white .text-center .rounded .border-shadow .pt-2 .pb-2 .pl-3 .pr-3 .text-left-i  .tran-5 .mr-8;
+}
+.text-left-i{
+  text-align: left !important;
+}
+.h-1\/\6{
+  height: 16.66667%;
+}
+
+@for $i from 1 through 9 {
+  .tran-#{$i}{  transition: all + " " + "0." + $i + "s";  }
+}
+
+@for $i from 1 through 20 {
+  .pin-b#{$i}{  bottom: #{$i}rem;  }
+}
+
+.modal-style{
+  @apply .mt-6 .bg-black-custom-4 .border-transparent .inline-block .font-sans  .text-white .text-center .rounded-full .border-shadow .pt-2 .pb-2 .pl-3 .pr-3 .text-left-i  .tran-3 .mr-8 .tran-8;
+
+}
+
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 300px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+  margin-top: 0;
+  color: #42b983;
+}
+
+.modal-body {
+  margin: 20px 0;
+}
+
+.modal-default-button {
+  float: right;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
